@@ -10,6 +10,7 @@ elif [ "$1" == "run" ]; then
     docker run -d -it \
         -p 1025:1025/tcp \
         -p 1143:1143/tcp \
+        -p 8088:8088/tcp \
         -v $(pwd)/docker-volume-data:/root/.config/hydroxide \
         --restart=unless-stopped \
         --name ${DOCKER_CONTAINER_NAME} \
