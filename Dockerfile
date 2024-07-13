@@ -25,7 +25,8 @@ RUN apk update && \
     apk add --no-cache \
         ca-certificates \
         bash \
-        openrc && \
+        openrc \
+        lighttpd && \
     rm -rf /var/cache/apk/*
 
 COPY --from=builder /go/bin/hydroxide /usr/bin/hydroxide

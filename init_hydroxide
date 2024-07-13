@@ -1,3 +1,9 @@
 #!/bin/bash
 
+# Lighttpd for certificate generation
+echo '<!DOCTYPE html><html><head><title>Up!</title><meta charset="utf-8"></head><body></body></html>' > /var/www/localhost/htdocs/index.html
+chown -R lighttpd:lighttpd /var/log/lighttpd
+lighttpd -f /etc/lighttpd/lighttpd.conf
+
+# Running hydroxide
 hydroxide -smtp-host 0.0.0.0 -imap-host 0.0.0.0 -carddav-host 0.0.0.0 serve
