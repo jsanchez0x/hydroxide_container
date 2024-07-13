@@ -1,0 +1,3 @@
+#!/bin/bash
+
+hydroxide -smtp-host 0.0.0.0 -imap-host 0.0.0.0 -carddav-host 0.0.0.0 serve
