@@ -23,7 +23,7 @@ Then with the following commands the image is created and executed.
 ./container.sh run
 ```
 
-### 2. Generate hydroxide user
+### 2. Connect hydroxide to Proton
 The following command will prompt for the Proton user, password and 2FA, if required. This will generate a key that will need to be saved, this is the password to connect to hydroxide.
 ```bash
 ./container.sh auth
