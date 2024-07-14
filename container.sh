@@ -2,16 +2,27 @@
 DOCKER_IMAGE="jsanchez0x/hydroxide"
 DOCKER_TAG="local"
 DOCKER_CONTAINER_NAME="hydroxide"
+PUBLIC_HOST=""
+LETSENCRYPT_EMAIL=""
+CERTS_PATH=""
+
 
 if [ "$1" == "build" ]; then
     docker build --rm --tag ${DOCKER_IMAGE}:${DOCKER_TAG} .
 
 elif [ "$1" == "run" ]; then
     docker run -d -it \
-        -p 1025:1025/tcp \
-        -p 1143:1143/tcp \
+        -p 587:587/tcp \
+        -p 993:993/tcp \
         -p 8088:8088/tcp \
-        -v $(pwd)/docker-volume-data:/root/.config/hydroxide \
+        --net proxy-network \
+        -v $(pwd)/docker-volume-data/hydroxide_config:/root/.config/hydroxide \
+        -v ${CERTS_PATH}:/root/.config/hydroxide/certs \
+        -v $(pwd)/docker-volume-data/lighttpd_logs:/var/log/lighttpd \
+        --env "VIRTUAL_HOST=${PUBLIC_HOST}" \
+        --env "VIRTUAL_PORT=80" \
+        --env "LETSENCRYPT_HOST=${PUBLIC_HOST}" \
+        --env "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}" \
         --restart=unless-stopped \
         --name ${DOCKER_CONTAINER_NAME} \
         ${DOCKER_IMAGE}:${DOCKER_TAG}
