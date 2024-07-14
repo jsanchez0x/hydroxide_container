@@ -31,8 +31,7 @@ The following command will prompt for the Proton user, password and 2FA, if requ
 
 ### 3. Certificates use
 At this point acme-companion will have done its job and the certificates will have been generated.\
-Now you must modify **line 7 of the container.sh** file with the host path where acme-companion leaves the certificates.\
-You must also modify **lines 3 and 4 of the init_hydroxide** file with the .cer and .key files respectively.
+Now you must modify **line 7 of the container.sh** file with the host path where acme-companion leaves the certificates.
 
 ### 4. Final execution
 Finally, it is necessary to regenerate the image and run it again.
