@@ -1,9 +1,18 @@
 #!/bin/bash
 
+CERT_NAME=""
+KEY_NAME=""
+
 # Lighttpd for certificate generation
 echo '<!DOCTYPE html><html><head><title>Up!</title><meta charset="utf-8"></head><body></body></html>' > /var/www/localhost/htdocs/index.html
 chown -R lighttpd:lighttpd /var/log/lighttpd
 lighttpd -f /etc/lighttpd/lighttpd.conf
 
 # Running hydroxide
-hydroxide -smtp-host 0.0.0.0 -imap-host 0.0.0.0 -carddav-host 0.0.0.0 serve
+hydroxide \
+    -smtp-host 0.0.0.0 -smtp-port 587 \
+    -imap-host 0.0.0.0 -imap-port 993 \
+    -carddav-host 0.0.0.0 -carddav-port 8088 \
+    -tls-cert /root/.config/hydroxide/certs/${CERTS_PATH} \
+    -tls-key /root/.config/hydroxide/certs/${KEY_NAME} \
+    serve
