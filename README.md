@@ -5,6 +5,7 @@ Docker container to run [hydroxide](https://github.com/emersion/hydroxide). In a
 - Docker
 - [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)*
 - [acme-companion](https://github.com/nginx-proxy/acme-companion)*
+- OPTIONAL. A Docker network where the nginx containers are. See *line 18 of container.sh*.
 - A domain pointing to the container.
 - Opening ports 587, 993 and 8088.
 
