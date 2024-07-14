@@ -24,11 +24,11 @@ Then with the following commands the image is created and the container runs.
 ```
 
 ### 2. Connect hydroxide to Proton
-The following command will prompt for the Proton user, password and 2FA, if required. This will generate a key that will need to be saved, this is the password to connect to hydroxide. 
+The following command will prompt for the Proton user, password and 2FA (if needed). This will generate a key that will need to be saved, this is the password to connect to hydroxide. **This key will not be stored anywhere.**
 ```bash
 ./container.sh auth
 ```
-If you want more information on this point, see the [hydroxide project readme](https://github.com/emersion/hydroxide/blob/master/README.md#installing).
+If you want more information about this, see the [hydroxide project readme](https://github.com/emersion/hydroxide/blob/master/README.md#installing).
 
 ### 3. Using the SSL certificates
 At this point acme-companion will have done its job and the certificates will have been generated.\
