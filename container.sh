@@ -2,6 +2,7 @@
 DOCKER_IMAGE="jsanchez0x/hydroxide"
 DOCKER_TAG="local"
 DOCKER_CONTAINER_NAME="hydroxide"
+DOCKER_VOLUME=""
 PUBLIC_HOST=""
 LETSENCRYPT_EMAIL=""
 CERTS_PATH=""
@@ -16,9 +17,9 @@ elif [ "$1" == "run" ]; then
         -p 993:993/tcp \
         -p 8088:8088/tcp \
         --net proxy-network \
-        -v $(pwd)/docker-volume-data/hydroxide_config:/root/.config/hydroxide \
+        -v ${DOCKER_VOLUME}/data:/root/.config/hydroxide \
+        -v ${DOCKER_VOLUME}/lighttpd:/var/log/lighttpd \
         -v ${CERTS_PATH}:/root/.config/hydroxide/certs \
-        -v $(pwd)/docker-volume-data/lighttpd_logs:/var/log/lighttpd \
         --env "VIRTUAL_HOST=${PUBLIC_HOST}" \
         --env "VIRTUAL_PORT=80" \
         --env "LETSENCRYPT_HOST=${PUBLIC_HOST}" \

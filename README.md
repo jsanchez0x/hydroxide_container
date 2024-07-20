@@ -15,7 +15,7 @@ Docker container to run [hydroxide](https://github.com/emersion/hydroxide). In a
 In short, you must first run the container, configure the hydroxide user and generate the certificates. With all this you can run the container normally. Using the *container.sh* script automates many tasks.
 
 ### 1. Create and execute the image
-First, you have to modify the variables in **lines 5 and 6 of the container.sh** file with the domain and the email used in Let's Encrypt.\
+First, you have to modify the variables in **lines 5, 6 and 7 of the container.sh** file with the path to create the container volumes, domain and the email used in Let's Encrypt.\
 Then with the following commands the image is created and the container runs.
 
 ```bash
